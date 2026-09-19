@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MY PORTFOLIOSITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            /* DIKKAT: Yahan pehle 'overflow: hidden' aur 'height: 100%' tha jisse scroll band tha. Maine hata diya hai. */
+            /*overflow-x: hidden;*/
+            /*overflow x hiddn comment kiya kyunki y eagr lga rhega to position sticy nahi kaam kreg */
+            /* Sirf left-right scroll band rakha hai */
+            font-family: Arial, sans-serif;
+            color: black;
+            scroll-behavior: smooth;
+            /* Navigation se click karne par smooth scroll ke liye */
+        }
+
+        /* --- NAVIGATION SECTION --- */
+        .navigation-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 15px 80px;
+            /*position: relative;*/
+            /*z-index: 2;*/
+            position: sticky; /* 'relative' ko hata kar 'sticky' kar diya */
+            top: 0;           /* Ye batata hai ki scroll hone par kahan chipakna hai (0px yaani bilkul top par) */
+            z-index: 100;     /* Ise thoda badha diya taaki ye hamesha baaki sab content ke upar rahe */
+            background: transparent;
+            backdrop-filter: blur(12px); /* Peeche ka content blur kar dega */
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .nav1 {
+            font-size: 32px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .nav2 {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 16px;
+        }
+
+        .nav2 a {
+            border: solid 2px green;
+            padding: 8px 24px;
+            text-decoration: none;
+            color: #333333;
+            border-radius: 25px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav2 a:hover {
+            color: #333333;
+            background-color: rgba(177, 221, 62, 0.93);
+            border-radius: 11px;
+        }
+
+        /* --- MAIN HERO SECTION --- */
+        .content {
+            /*border: solid 1px black ;*/
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            z-index: 1;
+            padding-left: 80px;
+            margin-top: 20vh;
+            text-align: start;
+            min-height: 70vh;
+            /* FIX: Hero section ko kam se kam 85% screen height di, taaki form naturally niche aaye */
+        }
+
+        .content h1 {
+            font-size: 60px;
+            margin: 10px 0;
+            line-height: 1.1;
+        }
+
+        .content h1 span {
+            color: rgb(123, 115, 234);
+        }
+
+        .content p {
+            margin: 5px 0 0 0;
+        }
+
+        .role {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        /* --- BUTTONS SECTION --- */
+        .buttons {
+            display: flex;
+            gap: 20px;
+            padding-top: 30px;
+            align-items: center;
+        }
+
+        .buttons a {
+            border: 1px solid black;
+            text-decoration: none;
+            padding: 10px 28px;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+
+
+        .a1 {
+            background-color: rgba(123, 115, 234, 0.31);
+            color: black;
+        }
+
+        .a1:hover {
+            border-radius: 11px;
+            background-color: transparent;
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 10px 10px 15px #646cff50;
+        }
+
+        .a2 {
+            color: rgb(132, 123, 255);
+        }
+
+        .a2:hover {
+            background-color: rgba(123, 115, 234, 0.31);
+            color: black;
+            border-radius: 11px;
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        /* --- NEW SCROLLABLE CONTACT SECTION --- */
+        .contact-section {
+            position: relative;
+            z-index: 1;
+            /*TRBL*/
+            padding: 60px 80px 100px 80px;
+            /* Hero section ke alignment se match karaya hai */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-section h2 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+        }
+
+        .contact-section h2 span {
+            color: rgb(123, 115, 234);
+        }
+
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: black;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: rgb(123, 115, 234);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* 
+        .border {
+            border: solid 1px black;
+        }  */
+
+        /* --- ABOUT & PROJECTS SHARED SECTION --- */
+        .content-section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 80px 60px 80px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .content-section h2 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+        }
+
+        .content-section h2 span {
+            color: rgb(123, 115, 234);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- FIX: Background ki position 'absolute' se 'fixed' kar di hai. Ab scroll karne par white screen nahi aayegi. -->
+    <div id="vanta-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></div>
+
+    <div class="navigation-bar" id="home">
+        <nav class="nav1 logo">Rahul Kashyap</nav>
+        <nav class="nav2">
+<!--            <a href="#home">Home</a>-->
+            <a href="javascript:void(0)" onclick="window.scrollTo({top:0 ,behavior:'smooth' })">Home</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('contact-area').scrollIntoView({behavior:'smooth'})">Contact</a>
+
+            <!-- Contact button click karne par niche form par scroll karega -->
+<!--            <a href="#contact-area">Contact</a>-->
+        </nav>
+    </div>
+
+    <!-- Main Website Content (Hero) -->
+    <div class="content border" id="hero">
+        <p class="role border">FULL-STACK DEVELOPER · FREELANCER · CONTENT CREATOR</p>
+        <h1>
+            I like <span>building</span> things<br>
+            that are simple, fast,<br>
+            and <span>actually convert.</span>
+        </h1>
+        <p class="role border">Enthusiast to learn new tech stacks. My perfection reflect on my work</p>
+        <div class="buttons">
+            <a class="a1" href="javascript:void(0)" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Work</a>
+            <a class="a2" href="javascript:void(0)" onclick="document.getElementById('contact-area').scrollIntoView({behavior:'smooth'})">Hire Me</a>
+<!--            <a class="a1" href="#projects">View My Work</a>-->
+<!--            <a class="a2" href="#contact-area">Hire Me</a>  -->
+        </div>
+    </div>
+
+    {% include "2about.html" %}
+    {% include "3projects.html" %}
+    {% include "9conatctConnect.html" %}
+
+    <!-- Three.js aur Vanta Fog -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        VANTA.FOG({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            highlightColor: 0x9aff20,
+            midtoneColor: 0xb3b3b3,
+            lowlightColor: 0xffffff,
+            baseColor: 0xe0e0e0,
+            blurFactor: 0.9,
+            speed: 3.50,
+            zoom: 1.20,
+        })
+    </script>
+</body>
+
+</html>
+

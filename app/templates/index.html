@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MY PORTFOLIOSITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .content {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            z-index: 1;
+            color: black;
+
+            /* DIKKAT: Pehle h1, p, aur buttons sabme alag-alag padding-left 70px tha.
+               SAHI TARIKA: Parent (.content) me ek baar padding de di, ab sab kuch apne aap align rahega. */
+            padding-left: 80px;
+            margin-top: 12vh;
+            text-align: start;
+        }
+
+        .content h1 {
+            font-size: 60px;
+            margin: 10px 0; /* Upar-neeche ka margin fix kiya */
+            line-height: 1.1; /* Text ke beech ki spacing theek ki */
+        }
+
+        .content h1 span {
+            color: rgb(123, 115, 234);
+        }
+
+        .content p {
+            margin: 5px 0 0 0;
+        }
+
+        .role {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        /* --- BUTTONS SECTION --- */
+        .buttons {
+            display: flex;
+            gap: 20px; /* DIKKAT: Pehle gap 10px tha aur .a2 me margin-left 14px tha, jo galat approach thi. */
+            padding-top: 30px; /* Sirf upar se spacing di, left se parent (.content) handle kar raha hai */
+            align-items: center; /* Buttons ko vertically center rakhega */
+        }
+
+        .buttons a {
+            border: solid 1.5px black;
+            text-decoration: none;
+            /* DIKKAT: padding 5px 5px aur font-size 30px tha jisse button ajeeb dikh raha tha. */
+            padding: 10px 28px;
+            font-size: 18px; /* Standard button size */
+            border-radius: 50px;
+            /* DIKKAT: Transition sirf .a2 me tha. Ab dono me add kiya smooth effect ke liye */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .a1 {
+            background-color: rgba(123, 115, 234, 0.31);
+            color: black;
+        }
+
+        .a1:hover {
+            border-radius: 11px;
+            background-color: transparent; /* Hover par clear effect */
+        }
+
+        .a2 {
+            color: rgb(132, 123, 255);
+            /* margin-left hata diya kyunki container ka 'gap' kaam kar raha hai */
+        }
+
+        .a2:hover {
+            background-color: rgba(123, 115, 234, 0.31);
+            color: black;
+            border-radius: 11px;
+        }
+
+        /* --- NAVIGATION SECTION --- */
+        .navigation-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* DIKKAT: Items upar-neeche the. Ye logo aur links ko ek seedhi line me layega. */
+            margin-top: 10px;
+
+            /* DIKKAT: padding right/left me unbalanced thi (60px aur 110px). Symmetrical kiya. */
+            padding: 15px 80px;
+        }
+
+        .nav1 {
+            font-size: 32px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .nav2 {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* DIKKAT: Gap 80px bohot bada tha. Isko 30px kiya. */
+            font-size: 16px;
+            /* padding-right hata diya kyunki parent ka padding kaam kar raha hai */
+        }
+
+        .nav2 a {
+            border: solid 2px green;
+            padding: 8px 24px;
+            text-decoration: none;
+            color: #333333;
+            border-radius: 25px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav2 a:hover {
+            color: #333333;
+            background-color: rgba(177, 221, 62, 0.93);
+            border-radius: 11px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR-->
+    <div class="navigation-bar">
+        <nav class="nav1 logo">Rahul Kashyap</nav>
+        <nav class="nav2">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Background Container -->
+    <div id="vanta-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></div>
+
+    <!-- HERO SECTION CONTENT -->
+    <div class="content">
+        <p class="role">FULL-STACK DEVELOPER · FREELANCER · CONTENT CREATOR</p>
+        <h1>
+            I like <span>building</span> things<br>
+            that are simple, fast,<br>
+            and <span>actually convert.</span>
+        </h1>
+        <p class="role">Enthusiast to learn new tech stacks. my perfection reflect on my work</p>
+        <div class="buttons">
+            <a class="a1" href="#">View My Work</a>
+            <a class="a2" href="#">Hire Me</a>
+        </div>
+    </div>
+
+    <!-- Three.js & Vanta Fog -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        VANTA.FOG({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            highlightColor: 0x9aff20,
+            midtoneColor: 0xb3b3b3,
+            lowlightColor: 0xffffff,
+            baseColor: 0xe0e0e0,
+            blurFactor: 0.9,
+            speed: 1.50,
+            zoom: 1.20,
+        })
+    </script>
+</body>
+</html>
